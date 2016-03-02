@@ -32,11 +32,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         
     	// Path for the 3 datasets
-    	String trainPath = "...";
-    	String validPath = "...";
-    	String testPath = "...";
-
-    	
+    	String trainPath =	"/datasets/...";
+    	String validPath =	"/datasets/...";
+    	String testPath =	"/datasets/...";
+		    	
     	// Create instances
     	Instances trainData = new Instances(new FileReader(trainPath));
     	Instances validData = new Instances(new FileReader(validPath));
