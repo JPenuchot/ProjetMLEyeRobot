@@ -11,13 +11,23 @@ import java.lang.String;
 package classifier;
 
 class PyInterface{
+
+  //  SRIPT LOCATIONS
+
+  //  Training script location
+  private String trainScriptLocation = "../classifier/train.py";
+  //  Classifying script location
+  private String classifyScriptLocation = "../classifier/classify.py";
+
+  //  DATA LOCATIONS
+
   //  Where the training datasets are located
-  private String trainDataFolder = "../data/in/train";
+  private String trainDataFolder = "../classifier/data/in/train";
   //  Where the testing datasets are located
-  private String testDataFolder = "../data/in/test";
+  private String testDataFolder = "../classifier/data/in/test";
 
   //  Where the input datasets are located (Unknown labels)
-  private String inputDataFolder = "../data/in/classify";
+  private String inputDataFolder = "../classifier/data/in/classify";
   //  Where the output labels will be located (Guessed labels)
-  private String outputDataFolder = "../data/out/labels";
+  private String outputDataFolder = "../classifier/data/out/labels";
 }
