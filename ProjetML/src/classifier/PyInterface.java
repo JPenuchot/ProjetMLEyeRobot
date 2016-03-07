@@ -11,7 +11,6 @@ import java.lang.String;
 package classifier;
 
 class PyInterface{
-
   //  SRIPT LOCATIONS
 
   //  Training script location
