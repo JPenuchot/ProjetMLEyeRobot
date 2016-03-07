@@ -9,5 +9,5 @@
 package interface;
 
 class MLInterface{
-
+  
 }

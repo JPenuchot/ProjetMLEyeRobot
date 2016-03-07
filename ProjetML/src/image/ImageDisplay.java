@@ -5,3 +5,9 @@
  *
  *  @author Jules Pénuchot
  */
+
+package image;
+
+class ImageDisplay{
+  Image displayImage;
+}
