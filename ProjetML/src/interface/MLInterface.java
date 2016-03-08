@@ -8,6 +8,6 @@
 
 package interface;
 
-class MLInterface{
-  
+public class MLInterface{
+
 }

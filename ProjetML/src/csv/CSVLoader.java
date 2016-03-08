@@ -8,6 +8,6 @@
 
 package csv;
 
-class CSVLoader{
+public class CSVLoader{
 
 }

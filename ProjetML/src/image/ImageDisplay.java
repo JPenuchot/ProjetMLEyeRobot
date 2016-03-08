@@ -8,6 +8,6 @@
 
 package image;
 
-class ImageDisplay{
+public class ImageDisplay{
   Image displayImage;
 }

@@ -10,7 +10,7 @@ import java.lang.String;
 
 package classifier;
 
-class PyInterface{
+public class PyInterface{
   //  SRIPT LOCATIONS
 
   //  Training script location
