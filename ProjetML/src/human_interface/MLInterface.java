@@ -6,7 +6,7 @@
  *  @author Jules Pénuchot
  */
 
-package interface;
+package human_interface;
 
 public class MLInterface{
 

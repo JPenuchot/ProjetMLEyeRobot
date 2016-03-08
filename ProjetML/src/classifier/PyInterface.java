@@ -6,9 +6,9 @@
  *  @author Jules Pénuchot
  */
 
+ package classifier;
+ 
 import java.lang.String;
-
-package classifier;
 
 public class PyInterface{
   //  SRIPT LOCATIONS
