@@ -18,7 +18,7 @@ public class Image {
 	private int width, height;
 	private char[] img;
 	
-	/*
+	/**
 	 * Store data from char array
 	 */
 	public Image (char[] img, int label, int width, int height) {
@@ -28,7 +28,7 @@ public class Image {
 		this.height = height;
 	}
 	
-	/*
+	/**
 	 * Store data from CSV
 	 */
 	public Image (String imgLine, int label, int width, int height) {
