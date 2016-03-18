@@ -45,8 +45,9 @@ public abstract class CSVIO {
 	 * 	CSV source path
 	 * @return
 	 * 	Image database
+	 * @throws IOException 
 	 */
-	public abstract ImageDB getDB(String source);
+	public abstract ImageDB getDB(String source) throws IOException;
 	
 	/**
 	 * Saves all the images in a database to a output directory
