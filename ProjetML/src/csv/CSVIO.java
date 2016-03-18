@@ -10,49 +10,61 @@ package csv;
 
 import java.util.ArrayList;
 
-import image.Image;
+import image.*;
 
 /*
  * Allows loading and handling of CSV data.
  * Specify the data type.
+ * Interface for CSVContiguous And CSVTensorFlow
  */
-public class CSVIO {
-
+public abstract class CSVIO {
 	
 	/**
-	 * Return an ArrayList of values in a specific line from the CSV
+	 * Return an image from a specific line in a CSV
 	 * 
-	 * @param line :
+	 * @param line
 	 * 	Line number (starts from 0)
-	 * 		source :
+	 * @param source
 	 * 	CSV source path
 	 * @return
-	 * 	An ArrayList of values in a specific line from the CSV
+	 * 	An image from a specific line in a CSV
 	 */
-	public static Image getLine (int line, String source) {
-		return null;
-	}
+	public Image getLine (int line, String source) { return null; }
 	
 	/**
 	 * Loads a CSV file as an image database.
-	 * @param source :
+	 * 
+	 * @param source
 	 * 	CSV source path
 	 * @return
 	 * 	Image database
 	 */
-	public static ArrayList<Image> getDB(String source){
-		return null;
+	public ImageDB getDB(String source) { return null; }
+	
+	/**
+	 * Saves all the images in a database to a output directory
+	 * File names will be 1.png, 2.png, 3.png, etc.
+	 * 
+	 * @param db
+	 *  A database of images
+	 * @param dest
+	 *  The output directory for all the pictures in the database
+	 */
+	public void saveImageDB(ImageDB db, String dest) {
+		int current = 0;
+		for (Image img : db) {
+			saveImage(db.get(current), dest + current+ ".png");
+			current++;
+		}
 	}
 	
-	public static Image getLine_legacy(int line, String source){
-		return null;
-	}
-	
-	public static ArrayList<Image> getDB_legacy(String source){
-		return null;
-	}
-	
-	public static void saveImage(ArrayList<Image> db, String dest){
-		
-	}
+	/**
+	 * Saves a single image
+	 * 
+	 * @param img
+	 *  The image to save
+	 * @param dest
+	 *  The file name of the image
+	 */
+	public void saveImage(Image img, String dest) { }
 }
