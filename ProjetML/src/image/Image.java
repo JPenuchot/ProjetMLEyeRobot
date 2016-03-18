@@ -1,4 +1,4 @@
-/**
+/*
  * Class Image
  *
  *  Stores images in raw buffers.
@@ -21,9 +21,9 @@ public class Image {
 	/**
 	 * Store data from char array
 	 */
-	public Image (char[] img, int label, int width, int height) {
+	public Image (char[] img, int width, int height) {
 		this.img = img;
-		this.label = label;
+		this.label = 0;
 		this.width = width;
 		this.height = height;
 	}
@@ -31,7 +31,7 @@ public class Image {
 	/**
 	 * Store data from CSV
 	 */
-	public Image (String imgLine, int label, int width, int height) {
+	public Image (String imgLine,  int width, int height) {
 		
 		// Convert the CSV string to char[]
 		String[] img = imgLine.split(",");
@@ -44,7 +44,7 @@ public class Image {
 		}
 		
 		// Store the informations
-		this.label = label;
+		this.label = 0;
 		this.width = width;
 		this.height = height;
 		
@@ -90,5 +90,12 @@ public class Image {
 	 * Get the height
 	 */
 	public int getHeight() { return height; }
+	
+	/**
+	 * Set the label
+	 */
+	public void setLabel ( int label) {
+		this.label = label;
+	}
 	
 }
