@@ -34,8 +34,9 @@ public abstract class CSVIO {
 	 * 	CSV source path
 	 * @return
 	 * 	An image from a specific line in a CSV
+	 * @throws IOException 
 	 */
-	public abstract Image getLine (int line, String source);
+	public abstract Image getLine (int line, String source) throws IOException;
 	
 	/**
 	 * Loads a CSV file as an image database.
@@ -103,6 +104,6 @@ public abstract class CSVIO {
 		biOut.setRGB(0, 0, img.getWidth(), img.getHeight(), pixels, 0, img.getWidth());
 		
 		// Save the file
-        ImageIO.write(biOut, format == CSVIO.PNG ? "PNG" : "JPEG", new File(dest));
+		ImageIO.write(biOut, format == CSVIO.PNG ? "PNG" : "JPEG", new File(dest));
 	}
 }
