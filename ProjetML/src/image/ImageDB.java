@@ -18,13 +18,14 @@ import image.Image;
 public class ImageDB implements Iterable<Image>, Iterator<Image> {
 
 	private ArrayList<Image> imDB;
-	private int count = 0;
+	private int count = -1;
 
 	/**
 	 * Create the database from an ArrayList
 	 */
 	public ImageDB(ArrayList<Image> db) {
-		imDB = db;
+		// Copy the value, not only the pointers
+		imDB = new ArrayList<Image>(db);
 	}
 
 	/**
@@ -67,13 +68,12 @@ public class ImageDB implements Iterable<Image>, Iterator<Image> {
 	 */
 	@Override
 	public boolean hasNext() {
-		if (count < imDB.size()) return true;
-		return false;
+		return count < imDB.size() - 1;
 	}
 
 	@Override
 	public Image next() {
-		if (count == imDB.size())
+		if (count == imDB.size() - 1)
 			throw new NoSuchElementException();
 		count++;
 		return imDB.get(count);
@@ -86,6 +86,7 @@ public class ImageDB implements Iterable<Image>, Iterator<Image> {
 
 	@Override
 	public Iterator<Image> iterator() {
+		count = -1; // Reset the counter
 		return this;
 	}
 
