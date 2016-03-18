@@ -75,4 +75,20 @@ public class Image {
 	public char getPixel(int x, int y, int color){
 		return img[(y * width + x) * 3 + color];
 	}
+	
+	/**
+	 * Get the label
+	 */
+	public int getLabel() { return label; }
+	
+	/**
+	 * Get the width
+	 */
+	public int getWidth() { return width; }
+	
+	/**
+	 * Get the height
+	 */
+	public int getHeight() { return height; }
+	
 }
