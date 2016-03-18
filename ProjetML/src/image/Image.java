@@ -9,12 +9,12 @@
 package image;
 
 public class Image {
+	
 	public static final int R = 0;
 	public static final int G = 1;
 	public static final int B = 2;
 	
 	private int label;
-
 	private int width, height;
 	private char[] img;
 	
@@ -38,7 +38,9 @@ public class Image {
 		int size = (int) Math.sqrt(img.length/3);
 		this.img = new char[img.length];
 		for (int i = 0; i < size; i++) {
-			this.img[i] = (char)Integer.parseInt(img[(i%3)*size+(i/3)]);
+			this.img[i] = (char)Integer.parseInt(img[i]);
+			this.img[i+1] = (char)Integer.parseInt(img[i + 2 * size]);
+			this.img[i+2] = (char)Integer.parseInt(img[i + 3 * size]);
 		}
 		
 		// Store the informations
@@ -52,8 +54,15 @@ public class Image {
 	 * Returns the raw image buffer.
 	 * @return image buffer.
 	 */
-	char[] getBuffer(){
+	public char[] getBuffer(){
 		return img;
+	}
+	
+	/*
+	 * Set the color of a pixel
+	 */
+	public void setPixel(int x, int y, int color, char value) {
+		img[(y * width + x) * 3 + color] = value;
 	}
 	
 	/**
@@ -63,7 +72,7 @@ public class Image {
 	 * @param color : color ID (Image.R, Image.G, Image.B or 0, 1, 2)
 	 * @return Pixel value.
 	 */
-	char getPixel(int x, int y, int color){
+	public char getPixel(int x, int y, int color){
 		return img[(y * width + x) * 3 + color];
 	}
 }
