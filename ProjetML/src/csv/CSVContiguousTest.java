@@ -22,7 +22,7 @@ public class CSVContiguousTest {
 		/**
 		 * Change this to the path of your CSV
 		 */
-		String csvPath = "C:\\Users\\Théophile\\Java\\Projet ML\\data\\local_train.csv";
+		String csvPath = "C:\\Users\\Théophile\\Java\\Projet ML\\data\\submit_valid.csv";
 		
 		// Load the 5 first pictures
 		CSVIO reader = new CSVContiguous();
@@ -58,6 +58,9 @@ public class CSVContiguousTest {
 			display.setImage(db.get(i));
 			Thread.sleep(1000);
 		}
+		
+		// Save a whole database (uncomment to test)
+		//reader.saveImageDB(db, ".\\db_out\\", CSVIO.JPEG);
 	
 		// ;)
 		assertTrue(true);
