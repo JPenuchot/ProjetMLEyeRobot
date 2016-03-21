@@ -8,6 +8,8 @@
 
 package image;
 
+import java.util.Arrays;
+
 public class Image {
 	
 	public static final int R = 0;
@@ -22,7 +24,7 @@ public class Image {
 	 * Store data from char array
 	 */
 	public Image (char[] img, int width, int height) {
-		this.img = img;
+		this.img = Arrays.copyOf(img, img.length);
 		this.label = 0;
 		this.width = width;
 		this.height = height;
