@@ -1,4 +1,4 @@
-/**
+/*
  * Class Image
  *
  *  Stores images in raw buffers.
@@ -7,6 +7,8 @@
  */
 
 package image;
+
+import java.util.Arrays;
 
 public class Image {
 	
@@ -18,33 +20,31 @@ public class Image {
 	private int width, height;
 	private char[] img;
 	
-	/*
+	/**
 	 * Store data from char array
 	 */
-	public Image (char[] img, int label, int width, int height) {
-		this.img = img;
-		this.label = label;
+	public Image (char[] img, int width, int height) {
+		this.img = Arrays.copyOf(img, img.length);
+		this.label = 0;
 		this.width = width;
 		this.height = height;
 	}
 	
-	/*
+	/**
 	 * Store data from CSV
 	 */
-	public Image (String imgLine, int label, int width, int height) {
+	public Image (String imgLine, int width, int height) {
 		
 		// Convert the CSV string to char[]
 		String[] img = imgLine.split(",");
-		int size = (int) Math.sqrt(img.length/3);
 		this.img = new char[img.length];
-		for (int i = 0; i < size; i++) {
-			this.img[i] = (char)Integer.parseInt(img[i]);
-			this.img[i+1] = (char)Integer.parseInt(img[i + 2 * size]);
-			this.img[i+2] = (char)Integer.parseInt(img[i + 3 * size]);
+		int size = img.length/3;
+		for (int i = 0; i < img.length; i++) {
+			this.img[((i - (i%size)) / size) + ((i%size) * 3)] = (char)Integer.parseInt(img[i]);
 		}
 		
 		// Store the informations
-		this.label = label;
+		this.label = 0;
 		this.width = width;
 		this.height = height;
 		
@@ -75,4 +75,27 @@ public class Image {
 	public char getPixel(int x, int y, int color){
 		return img[(y * width + x) * 3 + color];
 	}
+	
+	/**
+	 * Set the label
+	 */
+	public void setLabel ( int label) {
+		this.label = label;
+	}
+	
+	/**
+	 * Get the label
+	 */
+	public int getLabel() { return label; }
+	
+	/**
+	 * Get the width
+	 */
+	public int getWidth() { return width; }
+	
+	/**
+	 * Get the height
+	 */
+	public int getHeight() { return height; }
+	
 }
