@@ -53,9 +53,18 @@ public class CSVContiguous extends CSVIO {
 		String lineContent = br.readLine();
 		br.close();
 		
+		// Convert the CSV string to char[]
+		String[] img = lineContent.split(",");
+		int length = img.length - (img.length % 3); // The length must be a multiple of 3
+		char[] imgChar = new char[length];
+		int size = length/3;
+		for (int i = 0; i < length; i++) {
+			imgChar[((i - (i%size)) / size) + ((i%size) * 3)] = (char)Integer.parseInt(img[i]);
+		}
+		
 		// Return an image created from the line
-		int size = (int)Math.sqrt(lineContent.split(",").length/3);
-		return new Image(lineContent, size, size);
+		int widthHeight = (int)Math.sqrt(size);
+		return new Image(imgChar, widthHeight, widthHeight);
 		
 	}
 
@@ -81,8 +90,18 @@ public class CSVContiguous extends CSVIO {
 		String line;
 		line = br.readLine(); // The first line is not an image!
 		while ((line = br.readLine()) != null) {
-			int size = (int)Math.sqrt(line.split(",").length/3);
-			db.add (new Image(line, size, size));
+			
+			// Convert the CSV string to char[]
+			String[] img = line.split(",");
+			int length = img.length - (img.length % 3); // The length must be a multiple of 3
+			char[] imgChar = new char[length];
+			int size = length/3;
+			for (int i = 0; i < length; i++) {
+				imgChar[((i - (i%size)) / size) + ((i%size) * 3)] = (char)Integer.parseInt(img[i]);
+			}
+			
+			int widthHeight = (int)Math.sqrt(size);
+			db.add (new Image(imgChar, widthHeight, widthHeight));
 		}
 		br.close();
 		
@@ -92,16 +111,17 @@ public class CSVContiguous extends CSVIO {
 	}
 	
 	/**
-	 * Saves all the images in a database to a output directory
-	 * File names will be 1.ext, 2.ext, 3.ext, etc.
+	 * Saves all the images in a database to a output directory or a CSV file
+	 * For CSVIO.PNG and CSVIO.jpeg, file names will be 1.ext, 2.ext, 3.ext, etc.
+	 * CSV header will be based on the first image in the database.
 	 * Ext will depend on @param format.
 	 * 
 	 * @param db
 	 *  A database of images
 	 * @param dest
-	 *  The output directory for all the pictures in the database
+	 *  The output directory/CSV for all the pictures in the database
 	 * @param Format
-	 *  The output image format : CSVIO.PNG or CSVIO.JPEG
+	 *  The output image format : CSVIO.PNG, CSVIO.JPEG, CSCIO.CSV_CONTIGUOUS or CSVIO.CSV_INTERLACED
 	 * @throws IOException 
 	 */
 	public void saveImageDB(ImageDB db, String dest, char format) throws IOException {
@@ -114,9 +134,9 @@ public class CSVContiguous extends CSVIO {
 	 * @param img
 	 *  The image to save
 	 * @param dest
-	 *  The file name of the image
+	 *  The file name of the image/CSV file
 	 * @param Format
-	 *  The output image format : CSVIO.PNG or CSVIO.JPEG
+	 *  The output image format : CSVIO.PNG, CSVIO.JPEG, CSCIO.CSV_CONTIGUOUS or CSVIO.CSV_INTERLACED
 	 * @throws IOException 
 	 */
 	public void saveImage (Image img, String dest, char format) throws IOException {
