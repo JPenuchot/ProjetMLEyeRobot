@@ -47,6 +47,10 @@ public class CSVContiguousTest {
 		reader.saveImage(images[0], "./1.png", CSVIO.PNG);
 		reader.saveImage(images[0], "./1.jpg", CSVIO.JPEG);
 		
+		// Try to rewrite a single image as CSVs
+		reader.saveImage(images[0], "./1_contiguous.csv", CSVIO.CSV_CONTIGUOUS);
+		reader.saveImage(images[0], "./1_interlaced.csv", CSVIO.CSV_INTERLACED);
+		
 		// Load a whole CSV as a database
 		System.out.println("Loading a database, this may take a certain time....");
 		ImageDB db = reader.getDB(csvPath);
@@ -59,8 +63,15 @@ public class CSVContiguousTest {
 			Thread.sleep(1000);
 		}
 		
-		// Save a whole database (uncomment to test)
+		display.setVisible(false);
+		
+		// Save a whole database as images (uncomment to test)
 		//reader.saveImageDB(db, ".\\db_out\\", CSVIO.JPEG);
+		//reader.saveImageDB(db, ".\\db_out\\", CSVIO.PNG);
+		
+		// Save a whole database as a CSV (uncomment to test)
+		//reader.saveImageDB(db,  "./db_interlaced.csv", CSVIO.CSV_INTERLACED);
+		//reader.saveImageDB(db,  "./db_contiguous.csv", CSVIO.CSV_CONTIGUOUS);
 	
 		// ;)
 		assertTrue(true);
