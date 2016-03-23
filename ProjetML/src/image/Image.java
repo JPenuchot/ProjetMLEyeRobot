@@ -23,11 +23,21 @@ public class Image {
 	/**
 	 * Store data from char array
 	 */
-	public Image (char[] img, int width, int height) {
-		this.img = Arrays.copyOf(img, img.length);
+	public Image (char[] img, int width) {
+		this.img = img;
 		this.label = 0;
 		this.width = width;
-		this.height = height;
+		this.height = img.length / 3 / width;
+	}
+	
+	/**
+	 * Store data from char array
+	 */
+	public Image (char[] img, int width, int label) {
+		this.img = img;
+		this.width = width;
+		this.height = img.length / 3 / width;
+		this.label = label;
 	}
 
 	/**
