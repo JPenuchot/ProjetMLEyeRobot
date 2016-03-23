@@ -10,6 +10,9 @@
 
 import java.lang.String;
 
+import image.*;
+import csv.*;
+
 public class PyInterface{
   //  SRIPT LOCATIONS
 
@@ -29,4 +32,21 @@ public class PyInterface{
   private String inputDataFolder = "../classifier/data/in/classify";
   //  Where the output labels will be located (Guessed labels)
   private String outputDataFolder = "../classifier/data/out/labels";
+    
+  /*
+   * Classifies an image database.
+   */
+  public void classify(ImageDB imdb){
+	  for(Image img : imdb){
+		  classify(img);
+	  }
+  }
+  
+  /*
+   * Classifies an image.
+   */
+  public void classify(Image img){
+	  //	TODO : Implementation
+	  img.setLabel(0);
+  }
 }
