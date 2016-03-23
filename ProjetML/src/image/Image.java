@@ -37,9 +37,10 @@ public class Image {
 		
 		// Convert the CSV string to char[]
 		String[] img = imgLine.split(",");
-		this.img = new char[img.length];
-		int size = img.length/3;
-		for (int i = 0; i < img.length; i++) {
+		int length = img.length - (img.length % 3); // The length must be a multiple of 3
+		this.img = new char[length];
+		int size = length/3;
+		for (int i = 0; i < length; i++) {
 			this.img[((i - (i%size)) / size) + ((i%size) * 3)] = (char)Integer.parseInt(img[i]);
 		}
 		
