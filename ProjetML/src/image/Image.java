@@ -29,27 +29,6 @@ public class Image {
 		this.width = width;
 		this.height = height;
 	}
-	
-	/**
-	 * Store data from CSV
-	 */
-	public Image (String imgLine, int width, int height) {
-		
-		// Convert the CSV string to char[]
-		String[] img = imgLine.split(",");
-		int length = img.length - (img.length % 3); // The length must be a multiple of 3
-		this.img = new char[length];
-		int size = length/3;
-		for (int i = 0; i < length; i++) {
-			this.img[((i - (i%size)) / size) + ((i%size) * 3)] = (char)Integer.parseInt(img[i]);
-		}
-		
-		// Store the informations
-		this.label = 0;
-		this.width = width;
-		this.height = height;
-		
-	}
 
 	/**
 	 * Returns the raw image buffer.
