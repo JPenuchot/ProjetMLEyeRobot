@@ -22,7 +22,7 @@ import image.ImageDB;
 public class CSVInterlaced implements IO {
 
 	/**
-	 * Read an image from a interlacedn CSV
+	 * Read an image from an interlaced CSV
 	 * 
 	 * @param src
 	 *  The source of the file containing the image
@@ -129,7 +129,7 @@ public class CSVInterlaced implements IO {
 		for (int j = 0; j < src.getHeight(); j++) {
 			for (int i = 0; i < src.getWidth(); i++) {
 				for (int color : new int[] {Image.R, Image.G, Image.B}) {
-					writer.print(src.getPixel(i, j, color) + ",");
+					writer.print((int)src.getPixel(i, j, color) + ",");
 				}
 			}
 		}
@@ -167,7 +167,7 @@ public class CSVInterlaced implements IO {
 			for (int j = 0; j < img.getHeight(); j++) {
 				for (int i = 0; i < img.getWidth(); i++) {
 					for (int color : new int[] {Image.R, Image.G, Image.B}) {
-						writer.print(img.getPixel(i, j, color) + ",");
+						writer.print((int)img.getPixel(i, j, color) + ",");
 					}
 				}
 			}
