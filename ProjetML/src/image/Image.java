@@ -34,7 +34,7 @@ public class Image {
 	 * Store data from char array
 	 */
 	public Image (char[] img, int width, int label) {
-		this.img = img;
+		this.img = Arrays.copyOf(img, img.length);
 		this.width = width;
 		this.height = img.length / 3 / width;
 		this.label = label;
