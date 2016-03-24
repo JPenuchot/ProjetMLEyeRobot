@@ -132,7 +132,7 @@ public class CSVContiguous implements IO {
 		for (int color : new int[] {Image.R, Image.G, Image.B}) {
 			for (int j = 0; j < src.getHeight(); j++) {
 				for (int i = 0; i < src.getWidth(); i++) {
-					writer.print(src.getPixel(i, j, color) + ",");
+					writer.print((int)src.getPixel(i, j, color) + ",");
 				}
 			}
 		}
@@ -171,7 +171,7 @@ public class CSVContiguous implements IO {
 			for (int color : new int[] {Image.R, Image.G, Image.B}) {
 				for (int j = 0; j < img.getHeight(); j++) {
 					for (int i = 0; i < img.getWidth(); i++) {
-						writer.print(img.getPixel(i, j, color) + ",");
+						writer.print((int)img.getPixel(i, j, color) + ",");
 					}
 				}
 			}
