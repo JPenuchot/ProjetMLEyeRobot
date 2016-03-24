@@ -1,5 +1,5 @@
 /*
- * JUnit test for CSVInterlaced class
+ * JUnit test for CSVInterlaced IO class
  * 
  * @author Théophile Walter
  */
@@ -48,14 +48,14 @@ public class CSVInterlacedTest {
 		display.setVisible(false);
 		
 		// Try to rewrite images
-		/*IO png = new io.PNG();
+		IO png = new PNG();
 		png.write(images[0], "./1.png");
 		IO jpg = new JPEG();
-		jpg.write(images[0], "./1.jpg");*/
+		jpg.write(images[0], "./1.jpg");
 		
 		// Try to rewrite a single image as CSVs
 		reader.write(images[0], "./1_contiguous.csv");
-		IO csvInterlaced = new io.CSVInterlaced();
+		IO csvInterlaced = new CSVInterlaced();
 		csvInterlaced.write(images[0], "./1_interlaced.csv");
 		
 		// Load a whole CSV as a database
@@ -72,13 +72,13 @@ public class CSVInterlacedTest {
 		
 		display.setVisible(false);
 		
-		// Save a whole database as images (uncomment to test)
-		/*png.writeDB(db, ".\\db_out\\");
-		jpg.writeDB(db, ".\\db_out\\");*/
+		// Save a whole database as images
+		png.writeDB(db, ".\\db_out\\");
+		jpg.writeDB(db, ".\\db_out\\");
 		
-		// Save a whole database as a CSV (uncomment to test)
-		//csvInterlaced.writeDB(db,  "./db_interlaced.csv");
-		//reader.writeDB(db,  "./db_contiguous.csv");
+		// Save a whole database as a CSV
+		csvInterlaced.writeDB(db,  "./db_interlaced.csv");
+		reader.writeDB(db,  "./db_contiguous.csv");
 	
 		// ;)
 		assertTrue(true);
