@@ -6,7 +6,12 @@
 
 package io;
 
-import image.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+import image.Image;
+import image.ImageDB;
 
 public interface IO {
 
@@ -15,10 +20,13 @@ public interface IO {
 	 * 
 	 * @param src
 	 *  The source of the file containing the image
+	 * @param n
+	 *  The number of the image in the file (only for the CSV)
 	 * @return
 	 *  An Image
+	 * @throws IOException 
 	 */
-	public Image read ( String src);
+	public Image read ( String src, int n) throws IOException;
 	
 	/**
 	 * Read an image database from file/folder
@@ -27,8 +35,10 @@ public interface IO {
 	 *  The source file/folder of the database
 	 * @return
 	 *  An ImageDB
+	 * @throws FileNotFoundException 
+	 * @throws IOException 
 	 */
-	public ImageDB readDB ( String src);
+	public ImageDB readDB ( String src) throws IOException;
 	
 	/**
 	 * Write an image to a file
@@ -37,8 +47,10 @@ public interface IO {
 	 *  The image to write
 	 * @param dest
 	 *  The destination file
+	 * @throws UnsupportedEncodingException 
+	 * @throws FileNotFoundException 
 	 */
-	public void write ( Image src, String dest);
+	public void write ( Image src, String dest) throws FileNotFoundException, UnsupportedEncodingException;
 	
 	/**
 	 * Write a database to a file/folder
@@ -47,7 +59,9 @@ public interface IO {
 	 *  The image database to write
 	 * @param dest
 	 *  The destination file/folder
+	 * @throws UnsupportedEncodingException 
+	 * @throws FileNotFoundException 
 	 */
-	public void writeDB (ImageDB src, String dest);
+	public void writeDB (ImageDB src, String dest) throws FileNotFoundException, UnsupportedEncodingException;
 	
 }
