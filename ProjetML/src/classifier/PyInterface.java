@@ -11,7 +11,7 @@
 import java.lang.String;
 
 import image.*;
-import csv.*;
+import io.*;
 
 public class PyInterface{
   //  SRIPT LOCATIONS
@@ -32,7 +32,13 @@ public class PyInterface{
   private String inputDataFolder = "../classifier/data/in/classify";
   //  Where the output labels will be located (Guessed labels)
   private String outputDataFolder = "../classifier/data/out/labels";
-    
+  
+  
+  public void train(ImageDB imdb){
+	  System.out.println("Function not implemented... Yet.");
+	  return;
+  }
+  
   /*
    * Classifies an image database.
    */
