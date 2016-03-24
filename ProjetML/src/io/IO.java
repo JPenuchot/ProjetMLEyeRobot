@@ -1,88 +1,67 @@
 /*
- * JUnit test for CSVInterlaced IO class
+ * I/O interface for the differents formats
  * 
  * @author Théophile Walter
  */
 
 package io;
 
-import static org.junit.Assert.*;
-
+import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import org.junit.Test;
+import java.io.UnsupportedEncodingException;
 
 import image.Image;
 import image.ImageDB;
-import image.ImageDisplay;
 
-public class CSVInterlacedTest {
+public interface IO {
 
-	@Test
-	public void CSVInterlaced() throws IOException, InterruptedException {
-
-		/**
-		 * Change this to the path of your CSV
-		 * /!\ THE INPUT CSV MUST BE INTERLACED
-		 *     FOR EXAMPLE FROM A CSVIO OUT
-		 */
-		String csvPath = "C:\\Users\\Théophile\\git\\ProjetMLEyeRobot\\ProjetML\\db_interlaced.csv";
-		
-		// Load the 5 first pictures
-		IO reader = new CSVInterlaced();
-		Image[] images = new Image[5];
-		for (int i = 0; i < 5; i++) {
-			images[i] = reader.read(csvPath, i + 1);
-		}
-		
-		// Display the images to check it
-		ImageDisplay display = new ImageDisplay(images[0]);
-		display.setVisible(true);
-		Thread.sleep(1000);
-		for (int i = 1; i < 5; i++) {
-			display.setImage(images[i]);
-			Thread.sleep(1000);
-		}
-		
-		// Hide the image
-		display.setVisible(false);
-		
-		// Try to rewrite images
-		IO png = new PNG();
-		png.write(images[0], "./1.png");
-		IO jpg = new JPEG();
-		jpg.write(images[0], "./1.jpg");
-		
-		// Try to rewrite a single image as CSVs
-		reader.write(images[0], "./1_contiguous.csv");
-		IO csvInterlaced = new CSVInterlaced();
-		csvInterlaced.write(images[0], "./1_interlaced.csv");
-		
-		// Load a whole CSV as a database
-		System.out.println("Loading a database, this may take a certain time....");
-		ImageDB db = reader.readDB(csvPath);
-		System.out.println("Done.");
-		
-		// Display the 5 first images to check it
-		display.setVisible(true);
-		for (int i = 0; i < 5; i++) {
-			display.setImage(db.get(i));
-			Thread.sleep(1000);
-		}
-		
-		display.setVisible(false);
-		
-		// Save a whole database as images
-		png.writeDB(db, ".\\db_out\\");
-		jpg.writeDB(db, ".\\db_out\\");
-		
-		// Save a whole database as a CSV
-		csvInterlaced.writeDB(db,  "./db_interlaced.csv");
-		reader.writeDB(db,  "./db_contiguous.csv");
+	/**
+	 * Read an image
+	 * 
+	 * @param src
+	 *  The source of the file containing the image
+	 * @param n
+	 *  The number of the image in the file (only for the CSV)
+	 * @return
+	 *  An Image
+	 * @throws IOException 
+	 */
+	public Image read ( String src, int n) throws IOException;
 	
-		// ;)
-		assertTrue(true);
-		
-	}
-
+	/**
+	 * Read an image database from file/folder
+	 * 
+	 * @param src
+	 *  The source file/folder of the database
+	 * @return
+	 *  An ImageDB
+	 * @throws FileNotFoundException 
+	 * @throws IOException 
+	 */
+	public ImageDB readDB ( String src) throws IOException;
+	
+	/**
+	 * Write an image to a file
+	 * 
+	 * @param src
+	 *  The image to write
+	 * @param dest
+	 *  The destination file
+	 * @throws UnsupportedEncodingException 
+	 * @throws FileNotFoundException 
+	 */
+	public void write ( Image src, String dest) throws FileNotFoundException, UnsupportedEncodingException;
+	
+	/**
+	 * Write a database to a file/folder
+	 * 
+	 * @param src
+	 *  The image database to write
+	 * @param dest
+	 *  The destination file/folder
+	 * @throws UnsupportedEncodingException 
+	 * @throws FileNotFoundException 
+	 */
+	public void writeDB (ImageDB src, String dest) throws FileNotFoundException, UnsupportedEncodingException;
+	
 }
