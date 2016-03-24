@@ -24,7 +24,7 @@ public class Image {
 	 * Store data from char array
 	 */
 	public Image (char[] img, int width) {
-		this.img = img;
+		this.img = Arrays.copyOf(img, img.length);
 		this.label = 0;
 		this.width = width;
 		this.height = img.length / 3 / width;
