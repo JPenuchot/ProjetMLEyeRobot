@@ -1,4 +1,4 @@
-/*
+/**
  * Class ImageDB
  * 
  * Represents a standardized set of Images.

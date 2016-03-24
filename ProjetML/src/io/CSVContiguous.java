@@ -1,4 +1,4 @@
-/*
+/**
  * Implementation of the IO interface for the contiguous CSV format
  * 
  * @author Théophile Walter

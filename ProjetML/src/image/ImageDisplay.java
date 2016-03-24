@@ -1,4 +1,4 @@
-/*
+/**
  *  Class ImageDisplay
  *
  *  Displays Image objects.

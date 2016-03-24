@@ -39,8 +39,9 @@ public class PyInterface{
 	  return;
   }
   
-  /*
-   * Classifies an image database.
+  /**
+   * Classifies an every Image in an ImageDB.
+   * @param imdb : ImageDB to classify
    */
   public void classify(ImageDB imdb){
 	  for(Image img : imdb){
@@ -48,8 +49,9 @@ public class PyInterface{
 	  }
   }
   
-  /*
+  /**
    * Classifies an image.
+   * @param img : Image to classify
    */
   public void classify(Image img){
 	  //	TODO : Implementation

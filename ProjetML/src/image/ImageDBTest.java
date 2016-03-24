@@ -1,4 +1,4 @@
-/*
+/**
  * JUnit test for ImageDB class
  * 
  * @author Théophile Walter

@@ -1,4 +1,4 @@
-/*
+/**
  * JUnit test for ImageDisplay class
  * 
  * @author Théophile Walter

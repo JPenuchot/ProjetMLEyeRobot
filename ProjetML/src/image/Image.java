@@ -1,4 +1,4 @@
-/*
+/**
  * Class Image
  *
  *  Stores images in raw buffers.

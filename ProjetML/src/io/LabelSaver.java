@@ -1,3 +1,11 @@
+/**
+ * LavelSaver
+ * 
+ * Saves labels into text files.
+ * 
+ * @author Jules Pénuchot
+ */
+
 package io;
 
 import java.io.FileNotFoundException;
