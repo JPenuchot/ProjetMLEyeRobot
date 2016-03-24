@@ -25,7 +25,7 @@ public class Main {
 		
 		System.out.println("Successfully classified submit_test.csv, saving labels...");
 		
-		LabelSaver.saveLabels(imdb, "C:\\Users\\Jules\\git\\ProjetMLEyeRobot\\ProjetML\\data\\submit_valid_result.txt");
+		LabelSaver.saveLabels(imdb, "C:\\Users\\Jules\\git\\ProjetMLEyeRobot\\ProjetML\\data\\valid.predict");
 		
 		//	Classifying submit_valid
 		imdb = imLoader.readDB("C:\\Users\\Jules\\git\\ProjetMLEyeRobot\\ProjetML\\data\\submit_valid.csv");
@@ -33,7 +33,7 @@ public class Main {
 		
 		System.out.println("Successfully classified submit_valid.csv, saving labels...");
 		
-		LabelSaver.saveLabels(imdb, "C:\\Users\\Jules\\git\\ProjetMLEyeRobot\\ProjetML\\data\\submit_test_result.txt");
+		LabelSaver.saveLabels(imdb, "C:\\Users\\Jules\\git\\ProjetMLEyeRobot\\ProjetML\\data\\test.predict");
 		
 	}
 }
