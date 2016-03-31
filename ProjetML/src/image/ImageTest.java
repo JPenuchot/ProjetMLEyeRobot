@@ -36,7 +36,7 @@ public class ImageTest {
 		assertEquals(testChar.getPixel(2, 0, Image.G), 255);
 		
 		// getLabel() / setLabel()
-		assertEquals(testChar.getLabel(), 0);
+		assertEquals(testChar.getLabel(), 2);
 		testChar.setLabel(42);
 		assertEquals(testChar.getLabel(), 42);
 		
