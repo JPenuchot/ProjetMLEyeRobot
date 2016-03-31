@@ -1,3 +1,6 @@
 # Données
 *.csv
 ProjetML/data/*
+
+# Fichiers pour les push depuis MacOS
+*.DS_Store
