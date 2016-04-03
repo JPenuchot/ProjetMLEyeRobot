@@ -9,8 +9,10 @@
  package classifier;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.String;
+import java.util.ArrayList;
 
 import image.*;
 import io.*;
@@ -26,39 +28,46 @@ public class PyInterface{
   //  DATA LOCATIONS
 
   //  Where the training datasets are located
-  private String trainDataFolder = "../classifier/data/in/train";
-  //  Where the testing datasets are located
-  private String testDataFolder = "../classifier/data/in/test";
+  private String trainDataFile = "../classifier/data/in/train.csv";
 
   //  Where the input datasets are located (Unknown labels)
-  private String inputDataFolder = "../classifier/data/in/classify";
+  private String inputDataFile = "../classifier/data/in/classify.csv";
   //  Where the output labels will be located (Guessed labels)
-  private String outputDataFolder = "../classifier/data/out/labels";
+  private String outputDataFile = "../classifier/data/out/labels.predict";
   
   
-  public void train(ImageDB imdb){
-	  System.out.println("Function not implemented... Yet.");
-	  return;
+  public void train(ImageDB imdb) throws FileNotFoundException, UnsupportedEncodingException{
+	  //	Sauvegarde de la DB
+	  IO writer = new CSVContiguous();
+	  writer.writeDB(imdb, trainDataFile);
+	  
+	  //	Lancement du script
+	  
+	  //	TODO
+	  
   }
   
   /**
    * Classifies an every Image in an ImageDB.
    * @param imdb : ImageDB to classify
- * @throws UnsupportedEncodingException 
- * @throws FileNotFoundException 
+ * @throws IOException 
    */
-  public void classify(ImageDB imdb) throws FileNotFoundException, UnsupportedEncodingException{
+  public void classify(ImageDB imdb) throws IOException{
 	  //	Sauvegarde de la DB
 	  IO writer = new CSVContiguous();
-	  writer.writeDB(imdb, inputDataFolder);
+	  writer.writeDB(imdb, inputDataFile);
 	  
 	  //	Lancement du script
-	  
+
+	  //	TODO
 	  
 	  //	Lecture des labels
+	  ArrayList<Integer> labels = LabelIO.readLabels(outputDataFile);
 	  
 	  //	Assignation des labels
-	  
+	  for(int i = 0; i < labels.size(); i++){
+		  imdb.get(i).setLabel(labels.get(i).intValue());
+	  }
   }
   
   /**
@@ -66,7 +75,15 @@ public class PyInterface{
    * @param img : Image to classify
    */
   public void classify(Image img){
-	  //	TODO : Implementation
-	  img.setLabel(0);
+	  //	Sauvegarde de la DB
+	  
+	  //	Lancement du script
+	  
+	  //	TODO
+	  
+	  //	Lecture du label
+	  
+	  
+	  //	Assignation du label
   }
 }
