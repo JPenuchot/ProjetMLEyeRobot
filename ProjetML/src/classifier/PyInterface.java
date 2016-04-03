@@ -36,14 +36,14 @@ public class PyInterface{
   private String outputDataFile = "../classifier/data/out/labels.predict";
   
   
-  public void train(ImageDB imdb) throws FileNotFoundException, UnsupportedEncodingException{
+  public void train(ImageDB imdb) throws IOException, InterruptedException{
 	  //	Sauvegarde de la DB
 	  IO writer = new CSVContiguous();
 	  writer.writeDB(imdb, trainDataFile);
 	  
 	  //	Lancement du script
-	  
-	  //	TODO
+	  Exec e = new Exec();
+	  String output = e.getProcessStdOut("python C:\\path\\to\\the\\script.py And the params");
 	  
   }
   
