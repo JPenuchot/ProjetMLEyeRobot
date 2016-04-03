@@ -3,7 +3,7 @@
  *
  *  Acts as a Java/Python interface to run ML tasks powered by Python scripts.
  *
- *  @author Jules Pénuchot
+ *  @author Jules Pénuchot, Théophile Walter
  */
 
  package classifier;
@@ -36,14 +36,14 @@ public class PyInterface{
   private String outputDataFile = "../classifier/data/out/labels.predict";
   
   
-  public void train(ImageDB imdb) throws FileNotFoundException, UnsupportedEncodingException{
+  public void train(ImageDB imdb) throws IOException, InterruptedException{
 	  //	Sauvegarde de la DB
 	  IO writer = new CSVContiguous();
 	  writer.writeDB(imdb, trainDataFile);
 	  
 	  //	Lancement du script
-	  
-	  //	TODO
+	  Exec e = new Exec();
+	  String output = e.getProcessStdOut("python C:\\path\\to\\the\\script.py And the params");
 	  
   }
   
@@ -51,15 +51,16 @@ public class PyInterface{
    * Classifies an every Image in an ImageDB.
    * @param imdb : ImageDB to classify
  * @throws IOException 
+ * @throws InterruptedException 
    */
-  public void classify(ImageDB imdb) throws IOException{
+  public void classify(ImageDB imdb) throws IOException, InterruptedException{
 	  //	Sauvegarde de la DB
 	  IO writer = new CSVContiguous();
 	  writer.writeDB(imdb, inputDataFile);
 	  
 	  //	Lancement du script
-
-	  //	TODO
+	  Exec e = new Exec();
+	  String output = e.getProcessStdOut("python C:\\path\\to\\the\\script.py And the params");
 	  
 	  //	Lecture des labels
 	  ArrayList<Integer> labels = LabelIO.readLabels(outputDataFile);
@@ -73,16 +74,15 @@ public class PyInterface{
   /**
    * Classifies an image.
    * @param img : Image to classify
+ * @throws InterruptedException 
+ * @throws IOException 
    */
-  public void classify(Image img){
+  public void classify(Image img) throws IOException, InterruptedException{
 	  //	Sauvegarde de la DB
 	  
 	  //	Lancement du script
-	  
-	  //	TODO
-	  
-	  //	Lecture du label
-	  
+	  Exec e = new Exec();
+	  String output = e.getProcessStdOut("python C:\\path\\to\\the\\script.py And the params");
 	  
 	  //	Assignation du label
   }
