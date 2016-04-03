@@ -8,6 +8,8 @@
 
  package classifier;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.lang.String;
 
 import image.*;
@@ -17,9 +19,9 @@ public class PyInterface{
   //  SRIPT LOCATIONS
 
   //  Training script location
-  private String trainScriptLocation = "../classifier/train.py";
+  private String trainScriptLocation = "../scripts/train.py";
   //  Classifying script location
-  private String classifyScriptLocation = "../classifier/classify.py";
+  private String classifyScriptLocation = "../scripts/classify.py";
 
   //  DATA LOCATIONS
 
@@ -42,11 +44,21 @@ public class PyInterface{
   /**
    * Classifies an every Image in an ImageDB.
    * @param imdb : ImageDB to classify
+ * @throws UnsupportedEncodingException 
+ * @throws FileNotFoundException 
    */
-  public void classify(ImageDB imdb){
-	  for(Image img : imdb){
-		  classify(img);
-	  }
+  public void classify(ImageDB imdb) throws FileNotFoundException, UnsupportedEncodingException{
+	  //	Sauvegarde de la DB
+	  IO writer = new CSVContiguous();
+	  writer.writeDB(imdb, inputDataFolder);
+	  
+	  //	Lancement du script
+	  
+	  
+	  //	Lecture des labels
+	  
+	  //	Assignation des labels
+	  
   }
   
   /**
