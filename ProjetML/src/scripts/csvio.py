@@ -1,19 +1,25 @@
 import csv
 
-#   Read CSV
+# Read CSV and return an list of list of integer values
 def readCSV(path):
-	file = open(path, "rb")
-	reader = csv.reader(file)
-	for row in reader:
-		print(row)
-#   End
+    file = open(path, "r")
+    return csv.reader(file)
+# End
+
+# Print a list
+def print_list2d (l):
+    i = 0
+    for e in l:
+        print ("l[" + str(i) + "] len : " + str(len(e)))
+        i += 1
+        for s in e:
+            print (str(s) + ", ", end = "")
+# End
 
 def tab_to_xy(tab):
     return
-#   End
+# End
 
 def save_labels(ytab):
     return
-#   End
-
-readCSV("C:\\Users\\Jules\\git\\ProjetMLEyeRobot\\ProjetML\\data\\local_train.csv")
+# End
