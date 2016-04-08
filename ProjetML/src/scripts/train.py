@@ -40,3 +40,5 @@ sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd)
 
 model.fit(X_train, Y_train, batch_size=32, nb_epoch=1)
+
+model.save_weights("model.weight", overwrite=True)
